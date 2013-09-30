@@ -115,5 +115,18 @@ var sources = [
             var card_name = $("title").text();
             return { name: card_name, description: location.href };
         }
+    },
+    
+    //Bitbucket
+    {
+        identify: function() {
+            return($('meta[name=og:type]').length > 0);
+        }
+        
+        parse: function() {
+            var card_name = $('meta[name=og:title]').attr("content");
+            var card_description = $('meta[name=og:description]').attr("content") + "\n\n" + location.href;
+            return { name=card_name, description: location.href };
+        }
     }
 ];
